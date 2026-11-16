@@ -1,0 +1,43 @@
+%% Arquitectura del sistema WDBC Optimizer (componentes reales del repositorio)
+flowchart TB
+    subgraph Cliente["Navegador · frontend/ (React + TypeScript + Vite)"]
+        UI["App.tsx<br/>3 pestañas con carga diferida"]
+        TABS["ClinicalTab · TelemetryTab · AuditTab"]
+        CH["components/charts/*<br/>ECharts"]
+        API_TS["lib/api.ts<br/>cliente fetch tipado"]
+        UI --> TABS --> CH
+        TABS --> API_TS
+    end
+
+    subgraph Servidor["backend/app (Python · FastAPI)"]
+        MAIN["main.py<br/>10 endpoints, run_in_threadpool"]
+        SCH["api/schemas.py<br/>validación Pydantic v2"]
+        SVC["services/model_service.py<br/>ModelService: orquestación,<br/>modelo activo, caché LRU"]
+        SER["services/serialization.py<br/>NaN/Inf → null"]
+        subgraph Nucleo["Núcleo numérico · solo NumPy"]
+            ME["math_engine/<br/>activations · losses ·<br/>gradients · finite_differences"]
+            OPT["optimization/<br/>gradient_descent"]
+            EV["evaluation/<br/>metrics"]
+        end
+        DATA["data/loader.py<br/>scikit-learn: carga, split,<br/>StandardScaler, PCA"]
+        MAIN --> SCH
+        MAIN --> SVC
+        SVC --> OPT --> ME
+        SVC --> ME
+        SVC --> EV
+        SVC --> DATA
+        SVC --> SER
+    end
+
+    API_TS -- "HTTP JSON /api/*<br/>(proxy de Vite → 127.0.0.1:8000)" --> MAIN
+
+    subgraph Offline["Herramientas fuera de línea"]
+        SCRIPT["scripts/reproduce_experiments.py"]
+        EX["examples/basic_usage.py"]
+        TESTS["backend/tests (pytest)"]
+    end
+    SCRIPT --> SVC
+    SCRIPT --> OPT
+    EX --> OPT
+    TESTS --> Nucleo
+    TESTS --> SVC

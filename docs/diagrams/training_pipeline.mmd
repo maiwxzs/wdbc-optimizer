@@ -1,0 +1,24 @@
+%% Proceso de entrenamiento (gradient_descent) tal como está implementado
+flowchart TD
+    A["Preparación de datos<br/>X estandarizada (455×30), y ∈ {0,1}"] --> B["Objetivo J(θ)<br/>LogisticObjective(X, y, λ, modo)"]
+    B --> C["Inicialización θ⁽⁰⁾<br/>zeros · random(seed) · trained"]
+    C --> D["k ← 0"]
+    D --> E["Predicción<br/>z = Xw + b,  p = σ(z)"]
+    E --> F["Pérdida<br/>J = mean(logaddexp(0,z) − y·z) + λ/2‖w‖²"]
+    F --> G["Gradiente<br/>∇w = Xᵀ(p−y)/m + λw,  ∂b = mean(p−y)"]
+    G --> H{"¿J no finito, J > 1e8<br/>o ∇J/θ no finitos?"}
+    H -- sí --> X1["Parada: DIVERGENCE<br/>+ diagnóstico"]
+    H -- no --> I{"‖∇J‖₂ < tol_grad?"}
+    I -- sí --> X2["Parada: GRAD_NORM"]
+    I -- no --> J{"k > 0 y |ΔJ| < tol_loss?"}
+    J -- sí --> X3["Parada: LOSS_CHANGE"]
+    J -- no --> K{"k = k_max?"}
+    K -- sí --> X4["Parada: MAX_ITER"]
+    K -- no --> L["Registrar telemetría<br/>(k, J, ‖∇J‖, |ΔJ|, ‖w‖)"]
+    L --> M["Actualización<br/>θ ← θ − α∇J"]
+    M --> N["k ← k + 1"]
+    N --> E
+    X1 --> R["GDResult: θ, motivo, historial,<br/>banderas numéricas, tiempo"]
+    X2 --> R
+    X3 --> R
+    X4 --> R

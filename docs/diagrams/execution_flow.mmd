@@ -1,0 +1,40 @@
+%% Flujo de ejecución: arranque de la API y atención de POST /api/train
+sequenceDiagram
+    autonumber
+    participant U as Usuario (navegador)
+    participant F as Frontend (React)
+    participant A as FastAPI (main.py)
+    participant S as ModelService
+    participant G as gradient_descent
+    participant O as LogisticObjective
+
+    Note over A,S: Arranque (lifespan)
+    A->>S: get_service() en threadpool
+    S->>S: load_wdbc() · split 80/20 · StandardScaler · PCA
+    S->>G: train(α=1, set_active=True)
+    G->>O: loss_and_grad(θ) × 4184
+    G-->>S: GDResult (grad_norm, k=4183)
+    S-->>A: modelo activo listo
+    A-)S: warmup() en segundo plano (compare, sweep, float_audit, pca)
+
+    Note over U,A: Petición del usuario (pestaña Telemetría)
+    U->>F: ajusta α, tolerancias, λ, modo
+    F->>A: POST /api/train {alpha, max_iter, ...}
+    A->>A: TrainRequest (Pydantic) → TrainRequestDTO
+    A->>S: train(dto) en threadpool
+    alt resultado en caché
+        S-->>A: dict cacheado
+    else
+        S->>G: gradient_descent(obj, θ⁰, GDConfig)
+        loop k = 0 … k_max
+            G->>O: loss_and_grad(θ)
+            G->>G: comprobar divergencia → ‖∇J‖ → |ΔJ| → k_max
+            G->>G: θ ← θ − α∇J
+        end
+        G-->>S: GDResult
+        S->>S: métricas, ROC, pesos, L, submuestreo
+        S->>S: to_jsonable (NaN/Inf → null)
+    end
+    S-->>A: dict JSON-safe
+    A-->>F: 200 OK (o 422 si ValueError)
+    F-->>U: curvas J, ‖∇J‖, |ΔJ| y motivo de parada

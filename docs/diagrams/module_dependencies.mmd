@@ -1,0 +1,27 @@
+%% Dependencias entre módulos Python (imports reales)
+flowchart LR
+    main["app.main"] --> schemas["app.api.schemas"]
+    main --> svc["app.services.model_service"]
+    svc --> ser["app.services.serialization"]
+    svc --> loader["app.data.loader"]
+    svc --> metrics["app.evaluation.metrics"]
+    svc --> me["app.math_engine"]
+    svc --> fd["app.math_engine.finite_differences"]
+    svc --> opt["app.optimization"]
+    opt --> gd["app.optimization.gradient_descent"]
+    gd --> grad["app.math_engine.gradients"]
+    me --> act["app.math_engine.activations"]
+    me --> loss["app.math_engine.losses"]
+    me --> grad
+    me --> fd
+    grad --> act
+    grad --> loss
+    loader -. "load_breast_cancer, train_test_split,<br/>StandardScaler, PCA" .-> sklearn[("scikit-learn")]
+    main -.-> fastapi[("FastAPI / Starlette")]
+    schemas -.-> pydantic[("Pydantic v2")]
+    act -.-> numpy[("NumPy")]
+    loss -.-> numpy
+    grad -.-> numpy
+    fd -.-> numpy
+    gd -.-> numpy
+    metrics -.-> numpy

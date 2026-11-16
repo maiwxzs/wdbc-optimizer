@@ -1,0 +1,114 @@
+%% Diagrama UML de clases del backend (clases y dataclasses reales)
+classDiagram
+    class LogisticObjective {
+        +ndarray X
+        +ndarray y
+        +float l2
+        +NumericMode mode
+        +float eps
+        +int overflow_events
+        +int n_loss_evals
+        +int n_grad_evals
+        +m() int
+        +dim() int
+        +logits(theta) ndarray
+        +loss(theta) float
+        +grad(theta) ndarray
+        +loss_and_grad(theta) tuple
+        +lipschitz_constant() float
+        -_activate(z) ndarray
+    }
+    class GDConfig {
+        +float alpha = 0.5
+        +int max_iter = 5000
+        +float tol_grad = 1e-5
+        +float tol_loss = 1e-12
+        +float divergence_threshold = 1e8
+        +int record_every = 1
+        +validate() None
+    }
+    class GDHistory {
+        +list~int~ iteration
+        +list~float~ loss
+        +list~float~ grad_norm
+        +list~float~ loss_change
+        +list~float~ weight_norm
+        +append(k, J, gn, dJ, wn) None
+    }
+    class GDResult {
+        +ndarray theta
+        +StopReason stop_reason
+        +int iterations
+        +GDHistory history
+        +float final_loss
+        +float final_grad_norm
+        +float elapsed_ms
+        +dict numeric_flags
+        +str divergence_detail
+        +w() ndarray
+        +b() float
+        +converged() bool
+        +message() str
+    }
+    class StopReason {
+        <<enumeration>>
+        GRAD_NORM
+        LOSS_CHANGE
+        MAX_ITER
+        DIVERGENCE
+    }
+    class WDBCDataset {
+        <<frozen dataclass>>
+        +list feature_names
+        +ndarray X_train / X_test
+        +ndarray y_train / y_test
+        +StandardScaler scaler
+        +PCA pca
+        +n_features() int
+        +standardize(X_raw) ndarray
+        +project(X_std) ndarray
+    }
+    class ModelService {
+        +WDBCDataset ds
+        -ActiveModel _active
+        -int _active_version
+        -OrderedDict _cache
+        +train(TrainRequestDTO) dict
+        +compare(scenarios, max_iter) dict
+        +predict(sample_index, features) dict
+        +model_info() dict
+        +dataset_summary() dict
+        +pca_points() dict
+        +gradient_check(point, h, seed, l2, mode) dict
+        +step_sweep(point, exp_min, exp_max, n, seed, l2) dict
+        +float_audit() dict
+        +warmup() None
+    }
+    class ActiveModel {
+        +ndarray theta
+        +dict config
+        +dict result_summary
+        +dict test_report
+        +dict train_report
+    }
+    class TrainRequestDTO {
+        +float alpha
+        +int max_iter
+        +float tol_grad
+        +float tol_loss
+        +float l2
+        +str mode
+        +str init
+        +int seed
+        +bool set_active
+        +int max_points
+    }
+    GDResult *-- GDHistory
+    GDResult --> StopReason
+    ModelService *-- WDBCDataset
+    ModelService o-- ActiveModel
+    ModelService ..> TrainRequestDTO : recibe
+    ModelService ..> LogisticObjective : crea
+    ModelService ..> GDConfig : crea
+    ModelService ..> GDResult : consume
+    GDResult ..> LogisticObjective : producido optimizando
