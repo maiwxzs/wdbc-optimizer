@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tema claro y sobrio, pensado para proyectarse y leerse durante un rato largo:
+   fondo papel, paneles blancos con borde fino, sin halos ni degradados. */
+:root {
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+html,
+body {
+  background: #f6f6f4;
+}
+
+body {
+  @apply text-slate-800 font-sans antialiased;
+}
+
+@layer components {
+  .glass {
+    background: #ffffff;
+    border: 1px solid #dde1e6;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+    @apply rounded-xl;
+  }
+  /* Se conserva la clase; ahora es un panel sólido (sin desenfoque). */
+  .glass-blur {
+    background: #ffffff;
+  }
+  .label {
+    @apply text-[11px] uppercase tracking-[0.12em] text-slate-500 font-medium;
+  }
+  .num {
+    @apply font-mono tabular-nums;
+  }
+  .field {
+    @apply w-full rounded-md border border-edge bg-white px-3 py-2 text-sm text-slate-900 font-mono
+      outline-none transition focus:border-engine focus:ring-2 focus:ring-engine/15;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold transition
+      disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-engine text-white border border-engine hover:bg-[#184a73];
+  }
+  .btn-ghost {
+    @apply btn border border-edge bg-white text-slate-700 hover:border-slate-400 hover:text-slate-900;
+  }
+}
+
+/* Deslizador: riel gris y control blanco con borde azul acero */
+input[type="range"] {
+  @apply w-full appearance-none bg-transparent cursor-pointer;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: #cfd5dc;
+}
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  margin-top: -6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 2px solid #1f5a8a;
+}
+input[type="range"]::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: #cfd5dc;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 2px solid #1f5a8a;
+}
+
+/* Tarjeta de creadores: antes un borde con degradado giratorio; ahora un
+   borde fino estático con una línea de acento a la izquierda. */
+.spin-border {
+  position: relative;
+  border-radius: 0.75rem;
+  border: 1px solid #dde1e6;
+  border-left: 3px solid #1f5a8a;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* Indicador de riesgo alto: un anillo que respira despacio, sin brillo. */
+@keyframes soft-pulse {
+  0% {
+    transform: scale(0.97);
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(1.08);
+    opacity: 0;
+  }
+}
+.pulse-ring {
+  animation: soft-pulse 2.6s ease-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Punto de estado que late suavemente (reemplaza a animate-ping) */
+@keyframes soft-dot {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+.soft-dot {
+  animation: soft-dot 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-ring,
+  .soft-dot {
+    animation: none;
+  }
+}
+
+.katex {
+  font-size: 1.02em;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cfd5dc;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
