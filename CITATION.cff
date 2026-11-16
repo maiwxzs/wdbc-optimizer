@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+message: "Si usa este software, cítelo con los metadatos de este archivo."
+title: "WDBC Optimizer: regresión logística como problema de optimización convexa"
+abstract: >-
+  Implementación en NumPy de la regresión logística regularizada sobre el conjunto
+  Wisconsin Diagnostic Breast Cancer, resuelta con gradiente descendente de paso fijo,
+  con formulación Log-Sum-Exp estable, verificación del gradiente por diferencias
+  finitas, una API REST (FastAPI) y una interfaz web de auditoría (React).
+  Proyecto del curso Métodos Numéricos, Universidad de los Llanos.
+type: software
+version: 1.0.0
+date-released: "2026-11-16"
+license: MIT
+# Autores del proyecto académico (frontend/src/config/team.ts). Repositorio mantenido por maiwxzs.
+authors:
+  - given-names: Maicol
+    family-names: Beltrán Aguilar
+  - given-names: Brayan
+    family-names: Fernández
+repository-code: "https://github.com/maiwxzs/wdbc-optimizer"
+url: "https://github.com/maiwxzs/wdbc-optimizer"
+keywords:
+  - logistic regression
+  - gradient descent
+  - numerical methods
+  - finite differences
+  - IEEE-754
+  - NumPy
+references:
+  - type: data
+    title: "Breast Cancer Wisconsin (Diagnostic)"
+    authors:
+      - family-names: Wolberg
+        given-names: William
+      - family-names: Mangasarian
+        given-names: Olvi
+      - family-names: Street
+        given-names: Nick
+      - family-names: Street
+        given-names: W.
+    year: 1993
+    publisher:
+      name: UCI Machine Learning Repository
+    doi: 10.24432/C5DW2B
+    license: CC-BY-4.0

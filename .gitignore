@@ -1,7 +1,31 @@
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.egg-info/
 .pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+build/
 .venv/
+venv/
+
+# Node / Vite
 node_modules/
 dist/
+*.local
+
+# Entorno y secretos
 .env
+.env.*
+
+# Sistema operativo / editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Presentación de la sustentación (archivo pesado; publíquelo como release si lo desea)
+*.pdf
