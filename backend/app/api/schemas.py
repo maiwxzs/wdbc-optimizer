@@ -40,7 +40,7 @@ class PredictRequest(BaseModel):
     features: list[float] | None = Field(None, min_length=30, max_length=30)
 
     @model_validator(mode="after")
-    def _one_of(self) -> "PredictRequest":
+    def _one_of(self) -> PredictRequest:
         if (self.sample_index is None) == (self.features is None):
             raise ValueError("indique exactamente uno: sample_index o features")
         return self

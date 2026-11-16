@@ -11,9 +11,9 @@ from .gradients import LogisticObjective, logistic_gradient, logistic_loss, pack
 from .losses import EPSILON, bce_from_logits, binary_cross_entropy, naive_binary_cross_entropy
 
 __all__ = [
-    "EXP_OVERFLOW_THRESHOLD",
     "EPSILON",
     "EPS_MACHINE",
+    "EXP_OVERFLOW_THRESHOLD",
     "LogisticObjective",
     "bce_from_logits",
     "binary_cross_entropy",

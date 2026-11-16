@@ -1,0 +1,2 @@
+# Configuración de Ruff para scripts/ y examples/: reutiliza la del backend.
+extend = "backend/pyproject.toml"

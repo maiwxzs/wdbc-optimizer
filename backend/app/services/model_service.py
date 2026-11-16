@@ -3,8 +3,9 @@ from __future__ import annotations
 
 import threading
 from collections import OrderedDict
+from collections.abc import Callable
 from dataclasses import asdict, dataclass
-from typing import Any, Callable
+from typing import Any
 
 import numpy as np
 
@@ -152,7 +153,7 @@ class ModelService:
         ds = self.ds
         Xr = ds.X_train_raw
         stats = []
-        for j, (name, name_es) in enumerate(zip(ds.feature_names, ds.feature_names_es)):
+        for j, (name, name_es) in enumerate(zip(ds.feature_names, ds.feature_names_es, strict=True)):
             col = Xr[:, j]
             stats.append(
                 {
@@ -192,18 +193,18 @@ class ModelService:
         return to_jsonable(
             {
                 "train": [
-                    {"x": p[0], "y": p[1], "label": int(l)} for p, l in zip(ds.pca_train, ds.y_train)
+                    {"x": p[0], "y": p[1], "label": int(lbl)} for p, lbl in zip(ds.pca_train, ds.y_train, strict=True)
                 ],
                 "test": [
                     {
                         "i": i,
                         "x": p[0],
                         "y": p[1],
-                        "label": int(l),
+                        "label": int(lbl),
                         "proba": pr,
                         "pred": int(pr >= 0.5),
                     }
-                    for i, (p, l, pr) in enumerate(zip(ds.pca_test, ds.y_test, p_test))
+                    for i, (p, lbl, pr) in enumerate(zip(ds.pca_test, ds.y_test, p_test, strict=True))
                 ],
                 "explained_variance": ds.pca.explained_variance_ratio_,
             }

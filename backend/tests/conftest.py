@@ -6,8 +6,8 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from app.data.loader import load_wdbc  # noqa: E402
-from app.math_engine import LogisticObjective  # noqa: E402
+from app.data.loader import load_wdbc
+from app.math_engine import LogisticObjective
 
 
 @pytest.fixture(scope="session")

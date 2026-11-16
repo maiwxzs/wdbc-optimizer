@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wdbc-optimizer"
+version = "1.0.0"
+description = "Regresión logística como problema de optimización convexa: gradiente descendente, aritmética IEEE-754 estable y verificación por diferencias finitas, implementados en NumPy."
+readme = "../README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+# Autores declarados en frontend/src/config/team.ts. Verifique antes de publicar.
+authors = [
+    { name = "Maicol Beltrán Aguilar" },
+    { name = "Brayan Fernández" },
+]
+keywords = ["logistic-regression", "gradient-descent", "numerical-methods", "finite-differences", "ieee-754", "numpy"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Intended Audience :: Education",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+dependencies = [
+    "numpy>=1.26",
+    "scikit-learn>=1.4",   # solo carga de datos, partición, estandarización y PCA (ver docs)
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.29",
+    "pydantic>=2.6",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0", "httpx>=0.27"]
+dev = ["pytest>=8.0", "httpx>=0.27", "ruff>=0.6"]
+experiments = ["matplotlib>=3.8"]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+# La configuración de pytest vive en pytest.ini (tiene prioridad sobre este archivo).
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+extend-exclude = [".venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "NPY", "RUF"]
+ignore = [
+    "E501",    # longitud de línea: no se impone formateador automático en el código original
+    "RUF001",  # caracteres Unicode ambiguos: el código usa notación matemática (σ, ∇, ‖…‖) a propósito
+    "RUF002",
+    "RUF003",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B018"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["app"]
