@@ -1,0 +1,268 @@
+{
+  "max_iter": 5000,
+  "lipschitz_L": 3.345514165170298,
+  "alpha_critical": 0.597815433221516,
+  "runs": [
+    {
+      "alpha": 0.01,
+      "alpha_over_critical": 0.016727570825851492,
+      "stop_reason": "max_iter",
+      "iterations": 5000,
+      "final_loss": 0.0735798171118257,
+      "final_grad_norm": 0.015460730130824309,
+      "test_accuracy": 0.9824561403508771
+    },
+    {
+      "alpha": 0.01778279410038923,
+      "alpha_over_critical": 0.029746294779579487,
+      "stop_reason": "max_iter",
+      "iterations": 5000,
+      "final_loss": 0.06767813737641108,
+      "final_grad_norm": 0.009896786512803726,
+      "test_accuracy": 0.9824561403508771
+    },
+    {
+      "alpha": 0.03162277660168379,
+      "alpha_over_critical": 0.05289722353147449,
+      "stop_reason": "max_iter",
+      "iterations": 5000,
+      "final_loss": 0.06343121967386477,
+      "final_grad_norm": 0.006209280129177014,
+      "test_accuracy": 0.9824561403508771
+    },
+    {
+      "alpha": 0.056234132519034905,
+      "alpha_over_critical": 0.09406604345424749,
+      "stop_reason": "max_iter",
+      "iterations": 5000,
+      "final_loss": 0.060612083146591986,
+      "final_grad_norm": 0.0036565977026443656,
+      "test_accuracy": 0.9736842105263158
+    },
+    {
+      "alpha": 0.1,
+      "alpha_over_critical": 0.1672757082585149,
+      "stop_reason": "max_iter",
+      "iterations": 5000,
+      "final_loss": 0.05898017661815402,
+      "final_grad_norm": 0.0020077256294909664,
+      "test_accuracy": 0.9736842105263158
+    },
+    {
+      "alpha": 0.1778279410038923,
+      "alpha_over_critical": 0.29746294779579485,
+      "stop_reason": "max_iter",
+      "iterations": 5000,
+      "final_loss": 0.058196813115726595,
+      "final_grad_norm": 0.000938485453024613,
+      "test_accuracy": 0.9736842105263158
+    },
+    {
+      "alpha": 0.31622776601683794,
+      "alpha_over_critical": 0.5289722353147449,
+      "stop_reason": "max_iter",
+      "iterations": 5000,
+      "final_loss": 0.057961663832190626,
+      "final_grad_norm": 0.00030285603053820315,
+      "test_accuracy": 0.9736842105263158
+    },
+    {
+      "alpha": 0.5623413251903491,
+      "alpha_over_critical": 0.9406604345424748,
+      "stop_reason": "max_iter",
+      "iterations": 5000,
+      "final_loss": 0.05793110914962821,
+      "final_grad_norm": 5.427527502140554e-05,
+      "test_accuracy": 0.9736842105263158
+    },
+    {
+      "alpha": 1.0,
+      "alpha_over_critical": 1.672757082585149,
+      "stop_reason": "grad_norm",
+      "iterations": 4183,
+      "final_loss": 0.05792997691230548,
+      "final_grad_norm": 9.998057256829972e-06,
+      "test_accuracy": 0.9736842105263158
+    },
+    {
+      "alpha": 1.7782794100389228,
+      "alpha_over_critical": 2.9746294779579485,
+      "stop_reason": "grad_norm",
+      "iterations": 2349,
+      "final_loss": 0.05792997680874275,
+      "final_grad_norm": 9.999516916979036e-06,
+      "test_accuracy": 0.9736842105263158
+    },
+    {
+      "alpha": 3.1622776601683795,
+      "alpha_over_critical": 5.289722353147449,
+      "stop_reason": "grad_norm",
+      "iterations": 1321,
+      "final_loss": 0.05792997661414147,
+      "final_grad_norm": 9.986480875431857e-06,
+      "test_accuracy": 0.9736842105263158
+    },
+    {
+      "alpha": 5.62341325190349,
+      "alpha_over_critical": 9.406604345424748,
+      "stop_reason": "grad_norm",
+      "iterations": 745,
+      "final_loss": 0.057929976341964146,
+      "final_grad_norm": 9.937386487551974e-06,
+      "test_accuracy": 0.9736842105263158
+    },
+    {
+      "alpha": 10.0,
+      "alpha_over_critical": 16.72757082585149,
+      "stop_reason": "grad_norm",
+      "iterations": 422,
+      "final_loss": 0.05792997666420771,
+      "final_grad_norm": 9.894365017454072e-06,
+      "test_accuracy": 0.9736842105263158
+    },
+    {
+      "alpha": 17.78279410038923,
+      "alpha_over_critical": 29.746294779579486,
+      "stop_reason": "grad_norm",
+      "iterations": 243,
+      "final_loss": 0.05792997785433812,
+      "final_grad_norm": 9.98596100304227e-06,
+      "test_accuracy": 0.9736842105263158
+    },
+    {
+      "alpha": 31.622776601683793,
+      "alpha_over_critical": 52.897223531474495,
+      "stop_reason": "max_iter",
+      "iterations": 5000,
+      "final_loss": 0.13609332531402457,
+      "final_grad_norm": 0.19561086820268636,
+      "test_accuracy": 0.9298245614035088
+    },
+    {
+      "alpha": 56.23413251903491,
+      "alpha_over_critical": 94.06604345424749,
+      "stop_reason": "max_iter",
+      "iterations": 5000,
+      "final_loss": 2.983455135463402,
+      "final_grad_norm": 0.9617579828199426,
+      "test_accuracy": 0.6842105263157895
+    },
+    {
+      "alpha": 100.0,
+      "alpha_over_critical": 167.2757082585149,
+      "stop_reason": "max_iter",
+      "iterations": 5000,
+      "final_loss": 0.8207623816525611,
+      "final_grad_norm": 0.195236317705608,
+      "test_accuracy": 0.9473684210526315
+    },
+    {
+      "alpha": 177.82794100389228,
+      "alpha_over_critical": 297.46294779579483,
+      "stop_reason": "max_iter",
+      "iterations": 5000,
+      "final_loss": 15.631441699276978,
+      "final_grad_norm": 1.1548084328220805,
+      "test_accuracy": 0.6578947368421053
+    },
+    {
+      "alpha": 316.2277660168379,
+      "alpha_over_critical": 528.9722353147449,
+      "stop_reason": "max_iter",
+      "iterations": 5000,
+      "final_loss": 13.666356676006346,
+      "final_grad_norm": 0.40215236078853245,
+      "test_accuracy": 0.8771929824561403
+    },
+    {
+      "alpha": 562.341325190349,
+      "alpha_over_critical": 940.6604345424748,
+      "stop_reason": "max_iter",
+      "iterations": 5000,
+      "final_loss": 74.51247152833622,
+      "final_grad_norm": 1.1019935538851708,
+      "test_accuracy": 0.6929824561403509
+    },
+    {
+      "alpha": 1000.0,
+      "alpha_over_critical": 1672.757082585149,
+      "stop_reason": "max_iter",
+      "iterations": 5000,
+      "final_loss": 382.14340044379946,
+      "final_grad_norm": 2.23951781301361,
+      "test_accuracy": 0.4473684210526316
+    },
+    {
+      "alpha": 1778.2794100389228,
+      "alpha_over_critical": 2974.6294779579484,
+      "stop_reason": "max_iter",
+      "iterations": 5000,
+      "final_loss": 73108.78591679625,
+      "final_grad_norm": 12.460720459648542,
+      "test_accuracy": 0.21052631578947367
+    },
+    {
+      "alpha": 3162.2776601683795,
+      "alpha_over_critical": 5289.72235314745,
+      "stop_reason": "divergence",
+      "iterations": 7,
+      "final_loss": 259858093.8228631,
+      "final_grad_norm": 720.9135408800208,
+      "test_accuracy": 0.9298245614035088
+    },
+    {
+      "alpha": 5623.413251903491,
+      "alpha_over_critical": 9406.60434542475,
+      "stop_reason": "divergence",
+      "iterations": 4,
+      "final_loss": 377450268.315041,
+      "final_grad_norm": 868.85556689957,
+      "test_accuracy": 0.07017543859649122
+    },
+    {
+      "alpha": 10000.0,
+      "alpha_over_critical": 16727.57082585149,
+      "stop_reason": "divergence",
+      "iterations": 3,
+      "final_loss": 690472826.6598505,
+      "final_grad_norm": 1175.1364907802972,
+      "test_accuracy": 0.9385964912280702
+    },
+    {
+      "alpha": 17782.794100389227,
+      "alpha_over_critical": 29746.294779579483,
+      "stop_reason": "divergence",
+      "iterations": 3,
+      "final_loss": 25362299577.398758,
+      "final_grad_norm": 7122.120422451407,
+      "test_accuracy": 0.9385964912280702
+    },
+    {
+      "alpha": 31622.776601683792,
+      "alpha_over_critical": 52897.22353147449,
+      "stop_reason": "divergence",
+      "iterations": 2,
+      "final_loss": 936046367.4723372,
+      "final_grad_norm": 1368.2482045928,
+      "test_accuracy": 0.06140350877192982
+    },
+    {
+      "alpha": 56234.13251903491,
+      "alpha_over_critical": 94066.04345424748,
+      "stop_reason": "divergence",
+      "iterations": 2,
+      "final_loss": 9589457299.917072,
+      "final_grad_norm": 4379.375134888376,
+      "test_accuracy": 0.06140350877192982
+    },
+    {
+      "alpha": 100000.0,
+      "alpha_over_critical": 167275.7082585149,
+      "stop_reason": "divergence",
+      "iterations": 2,
+      "final_loss": 97262355222.37137,
+      "final_grad_norm": 13947.212093720465,
+      "test_accuracy": 0.06140350877192982
+    }
+  ]
+}
