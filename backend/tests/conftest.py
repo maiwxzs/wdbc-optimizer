@@ -34,3 +34,23 @@ def service(ds):
     from app.services.model_service import ModelService
 
     return ModelService(ds)
+
+
+# Categoría de cada módulo de pruebas. Se asigna aquí para no duplicar marcas en
+# cada archivo; permite, p. ej., `pytest -m numerical`.
+_MODULE_MARKERS = {
+    "test_activations_losses": ("unit", "numerical"),
+    "test_gradients_fd": ("unit", "numerical"),
+    "test_gradient_descent": ("unit", "numerical"),
+    "test_numerical_properties": ("numerical",),
+    "test_integration_pipeline": ("integration",),
+    "test_service_api": ("integration",),
+    "test_architecture": ("architecture",),
+    "test_experiments_script": ("integration",),
+}
+
+
+def pytest_collection_modifyitems(items):
+    for item in items:
+        for name in _MODULE_MARKERS.get(item.module.__name__.rsplit(".", 1)[-1], ()):
+            item.add_marker(getattr(pytest.mark, name))
