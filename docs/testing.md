@@ -63,7 +63,7 @@ Las pruebas nuevas evitan comparar el código consigo mismo. Cada una contrasta 
 | **backend** (Python 3.10, 3.11, 3.12 y 3.13) | instalar `requirements.txt` + `requirements-dev.txt` → `pip check` → `ruff check` → `pytest -ra` → `examples/basic_usage.py` |
 | **frontend** (Node 20) | `npm ci` → `npm run typecheck` → `npm run build` |
 
-**Estado de la verificación:** en el entorno de preparación (Linux, Python 3.13.18, Node 22) pasaron las 72 pruebas, Ruff, el *typecheck* y la compilación. **El *workflow* de GitHub Actions todavía no se ha ejecutado**: lo hará la primera vez que se suba el repositorio. La matriz de Python 3.10 a 3.12 no se probó localmente.
+**Estado de la verificación:** en el entorno de preparación (Linux, Python 3.13.18, Node 22) pasaron las 72 pruebas, Ruff, el *typecheck* y la compilación. La primera ejecución en GitHub Actions ([run 43977248421](https://github.com/maiwxzs/wdbc-optimizer/actions/runs/43977248421)) pasó los cinco trabajos: Python 3.10, 3.11, 3.12 y 3.13, y frontend.
 
 ## Lo que no se prueba
 

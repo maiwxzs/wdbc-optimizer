@@ -55,7 +55,9 @@ Entorno: Linux x86-64, Python 3.13.18, NumPy 2.5.3, scikit-learn 1.9.1, Node 22.
 | Enlaces internos y anclas de los 39 archivos Markdown | 0 rotos (comprobación automática) |
 | Sintaxis de los 8 diagramas Mermaid | válida |
 
-**No verificado:** el *workflow* de GitHub Actions no se ha ejecutado todavía (lo hará la primera vez que se suba el repositorio), y Python 3.10–3.12 no se probaron localmente. El renderizado de las fórmulas LaTeX en GitHub no se comprobó visualmente.
+**GitHub Actions:** la primera ejecución tras la publicación ([run 43977248421](https://github.com/maiwxzs/wdbc-optimizer/actions/runs/43977248421), *commit* `abb5965`) terminó con éxito en los cinco trabajos: backend con Python 3.10, 3.11, 3.12 y 3.13, y frontend.
+
+**No verificado:** el renderizado de las fórmulas LaTeX en GitHub no se comprobó visualmente.
 
 ## 5. Problemas y observaciones encontrados en la auditoría
 
@@ -77,7 +79,6 @@ Ya completado: año y titular en `LICENSE`, URL en `CITATION.cff`, `README.md` (
 | Pendiente (opcional) | Dónde |
 |---|---|
 | Activar *Private vulnerability reporting* (lo citan `SECURITY.md` y `CODE_OF_CONDUCT.md`) y Dependabot | *Settings → Code security* del repositorio |
-| Revisar la primera ejecución de la CI (Python 3.10–3.12 no se probaron localmente) | pestaña *Actions* |
 | Decidir si se publica la presentación PDF: `.gitignore` excluye `*.pdf` y no se subió | subirla como *release* o eliminar la línea `*.pdf` |
 | Añadir ORCID, correo o afiliación a los autores, si se desea | `CITATION.cff` |
 
